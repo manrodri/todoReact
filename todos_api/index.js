@@ -8,10 +8,12 @@ var todoRoutes = require('./routes/todos');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/todos', todoRoutes);
+app.use(express.static(__dirname + "/views"));
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function (req, res) {
-    return res.send('<h1>hello from the main index page!</h1>');
+    return res.sendFile('index.html');
 });
 
 app.listen(port, function () {
